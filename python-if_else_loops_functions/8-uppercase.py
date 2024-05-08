@@ -1,10 +1,8 @@
 #!/usr/bin/python3
-def majuscule(string):
+def uppercase(string):
     for character in string:
-        if 'a' <= character <= 'z':
-            uppercase_char = chr(ord(character) - 32)
-        else:
-            character
-        print('{}'.format(uppercase_char), end='')
-    print()
+        if ord(character) >= 97 and ord(character) <= 122:
+            character = chr(ord(character) - 32)
+        print("{}".format(character), end="")
+    print("")
     
