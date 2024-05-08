@@ -5,5 +5,5 @@ def majuscule(string):
             uppercase_char = chr(ord(character) - 32)
         else:
             character
-        print(uppercase_char, end='')
+        print('{}'.format(uppercase_char), end='')
     print()
