@@ -10,4 +10,6 @@ def roman_to_int(roman_string):
                 roman_value -= roman_d[roman_string[letter]]
             else:
                 roman_value += roman_d[roman_string[letter]]
+        else:
+            roman_value += roman_d[roman_string[letter]]
     return roman_value
