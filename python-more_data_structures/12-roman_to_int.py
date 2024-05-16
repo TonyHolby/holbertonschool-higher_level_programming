@@ -5,9 +5,8 @@ def roman_to_int(roman_string):
     if not roman_string or roman_string is None:
         return 0
     for letter in range(len(roman_string)):
-        if letter < len(roman_string) - 1 and
-        roman_d[roman_string[letter]] <
-        roman_d[roman_string[letter+1]]:
+        if letter < len(roman_string) - 1
+        and roman_d[roman_string[letter]] < roman_d[roman_string[letter+1]]:
             roman_value -= roman_d[roman_string[letter]]
         else:
             roman_value += roman_d[roman_string[letter]]
