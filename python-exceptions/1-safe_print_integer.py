@@ -6,11 +6,12 @@ def safe_print_integer(value):
             return True
         elif isinstance(value, str):
             for character in value:
-                if character.isdigit() is False:
-                    return False
+                if character.isdigit() is True:
+                    continue
                 else:
-                    print("{}".format(value))
-                    return True
+                    return False
+            print("{}".format(value))
+            return True
         else:
             raise TypeError
     except TypeError:
