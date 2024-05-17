@@ -5,6 +5,11 @@ def safe_print_integer(value):
             print("{}".format(value))
             return True
         else:
-            raise ValueError
-    except ValueError:
+            raise TypeError
+    except TypeError:
+        if isinstance(value, str) is True:
+            for index in value:
+                if index >= '0' and index <= '9':
+                    print("{}".format(value))
+                    return True
         return False
