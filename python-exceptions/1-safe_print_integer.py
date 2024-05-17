@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 def safe_print_integer(value):
+    if value == "" or value is None:
+        print()
+        return True
     try:
         if isinstance(value, int):
             print("{}".format(value))
