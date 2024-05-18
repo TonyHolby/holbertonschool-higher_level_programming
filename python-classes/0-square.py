@@ -1,9 +1,7 @@
 #!/usr/bin/python3
+
+"""An empty class Square that defines a square"""
+
 class Square:
-    side = 1
-
-    def __init__ (self, c):
-        self.side = c
-
-select_size = Square()
-print(select_size.side)
+    """A class Square"""
+    pass
