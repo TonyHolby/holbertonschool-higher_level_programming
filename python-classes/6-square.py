@@ -70,7 +70,9 @@ class Square:
         else:
             for j in range(self.__position[1]):
                 print()
+            spaces_add = ""
+            for k in range(self.__position[0]):
+                spaces_add += " "
+            spaces_add += ("#" * self.__size)
             for i in range(self.__size):
-                for i in range(self.__position[0]):
-                    print(end=" ")
-                print("#" * self.__size)
+                print(spaces_add)
