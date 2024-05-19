@@ -45,9 +45,8 @@ class Square:
         """ To set the private instance attibute position. """
         if not isinstance(value, tuple) or len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
-        if not all(isinstance(number, int) for number in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if not all(number >= 0 for number in value):
+        for element in value:
+            if not isinstance(element, int) or element < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
@@ -62,8 +61,7 @@ class Square:
             print()
             return
         else:
-            try:
-                for j in range(0, self.__position[1]):
+            for j in range(0, self.__position[1]):
                 print()
             for i in range(0, self.__size):
                 print(" " * self.__position[0], end="")
