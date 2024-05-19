@@ -10,8 +10,7 @@
 
 
 class Square:
-    """ Define a Square.
-    """
+    """ Define a Square. """
 
     def __init__(self, size=0):
         """ Initialize a Square.
@@ -23,14 +22,12 @@ class Square:
 
     @property
     def size(self):
-        """ To retrieve the private instance attibute size.
-        """
+        """ To retrieve the private instance attibute size. """
         return self.__size
 
     @size.setter
     def size(self, value):
-        """ To set the private instance attibute size.
-        """
+        """ To set the private instance attibute size. """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         if value < 0:
@@ -38,14 +35,12 @@ class Square:
         self.__size = value
 
     def area(self):
-        """ To return the area of the square.
-        """
+        """ To return the area of the square. """
         area = self.__size * self.__size
         return area
 
     def my_print(self):
-        """ To print the square with the character #.
-        """
+        """ To print the square with the character #. """
         if self.__size == 0:
             print()
         else:
