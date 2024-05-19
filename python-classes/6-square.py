@@ -67,12 +67,10 @@ class Square:
         """
         if self.__size == 0:
             print()
+            return
         else:
             for j in range(self.__position[1]):
                 print()
-            spaces_add = ""
-            for k in range(self.__position[0]):
-                spaces_add += " "
-            spaces_add += ("#" * self.__size)
             for i in range(self.__size):
-                print(spaces_add)
+                print(" " * self.__position[0], end="")
+                print("#" * self.__size)
