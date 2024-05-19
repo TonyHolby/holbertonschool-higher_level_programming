@@ -2,13 +2,12 @@
 
 """ A class Square that defines a square by
     a private instance attribute size
-    and the handling of TypeError and ValueError
+    and the handling of TypeError and ValueError.
 """
 
 
 class Square:
-    """ Define a Square
-    """
+    """ Define a Square. """
 
     def __init__(self, size=0):
         """ Initialize a Square.
