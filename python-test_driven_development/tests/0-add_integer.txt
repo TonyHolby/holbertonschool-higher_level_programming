@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+"""
+Works with numbers:
+
+>>> add_integer(2, 3)
+5
+
+>>> add_integer(2.3, 3)
+5
+"""
