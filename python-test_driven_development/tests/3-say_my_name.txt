@@ -1,23 +1,25 @@
-""" prints my name.
+>>> say_my_name = __import__('3-say_my_name').say_my_name
 
-say_my_name = __import__('3-say_my_name').say_my_name
-
+Works with :
 >>> say_my_name("John", "Smith")
 My name is John Smith
 
+Works with :
 >>> say_my_name("Bob")
-My name is Bob
+My name is Bob 
 
+Works with :
 >>> say_my_name("C3", "PO")
 My name is C3 PO
 
+Does not work with :
 >>> say_my_name(12, "White")
 Traceback (most recent call last):
         ...
 TypeError: first_name must be a string
 
+Does not work with :
 >>> say_my_name("Walter", -10)
 Traceback (most recent call last):
         ...
 TypeError: last_name must be a string
-"""
