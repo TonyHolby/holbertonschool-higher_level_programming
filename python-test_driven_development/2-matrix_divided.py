@@ -19,7 +19,7 @@
 
 
 def matrix_divided(matrix, div):
-    """ Returns a new matrix. """
+    """ prints a new matrix. """
     if not isinstance(matrix, list):
         raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
     for row in matrix:
