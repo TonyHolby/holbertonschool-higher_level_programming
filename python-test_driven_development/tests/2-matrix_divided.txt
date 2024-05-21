@@ -13,6 +13,10 @@ Works with :
 >>> matrix_divided(matrix, -2.55)
 [[-0.39, -0.78, -1.18], [-1.57, -1.96, -2.35]]
 
+Works with :
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], float('inf'))
+[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 Does not work with :
 >>> matrix_divided(matrix, 0)
 Traceback (most recent call last):
