@@ -13,8 +13,8 @@ class Rectangle:
         """ Initialize a rectangle.
 
         Args:
-            width: The width of the rectangle.
-            height: The height of the rectangle.
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
         """
         self.__height = height
         self.__width = width
