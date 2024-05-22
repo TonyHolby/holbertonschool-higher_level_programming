@@ -3,6 +3,6 @@
 """An empty class Rectangle that defines a rectangle."""
 
 
-class Square:
+class Rectangle:
     """An empty class Rectangle."""
     pass
