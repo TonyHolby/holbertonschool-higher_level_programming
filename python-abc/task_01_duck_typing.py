@@ -27,10 +27,9 @@ class Circle(Shape):
     """ Defines a class circle. """
     def __init__(self, radius):
         """ Initialize a circle. """
-        if radius >= 0:
-            self.radius = radius
-        else:
-            raise ValueError("radius must be positive")
+        if not isinstance(radius, (int, float)) or radius <= 0:
+            raise ValueError("Radius must be a positive number.")
+        self.radius = radius
 
     """ A method to calculate the area of the circle. """
     def area(self):
@@ -52,6 +51,8 @@ class Rectangle(Shape):
     """ Defines a class rectangle. """
     def __init__(self, width, height):
         """ Initialize a rectangle. """
+        if not (isinstance(width, (int, float)) and isinstance(height, (int, float))) or width <= 0 or height <= 0:
+            raise ValueError("Width and height must be positive numbers.")
         self.width = width
         self.height = height
 
