@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
     Prints a square with the character #.
-    
+
     Parameters:
         size (int): The size length of the square.
 
