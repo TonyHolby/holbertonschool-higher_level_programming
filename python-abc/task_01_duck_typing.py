@@ -25,7 +25,7 @@ class Shape(ABC):
 
 class Circle(Shape):
     """ Defines a class circle. """
-    def __init__(self, radius>=0):
+    def __init__(self, radius):
         """ Initialize a circle. """
         self.radius = radius
 
