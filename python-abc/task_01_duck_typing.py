@@ -27,7 +27,10 @@ class Circle(Shape):
     """ Defines a class circle. """
     def __init__(self, radius):
         """ Initialize a circle. """
-        self.radius = radius
+        if radius >= 0:
+            self.radius = radius
+        else:
+            raise ValueError("radius must be positive")
 
     """ A method to calculate the area of the circle. """
     def area(self):
