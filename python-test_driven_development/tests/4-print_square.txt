@@ -10,6 +10,7 @@ Works with :
 Works with :
 >>> print_square(0)
 
+
 Does not work with :
 >>> print_square(-2)
 Traceback (most recent call last):
@@ -33,3 +34,9 @@ Does not work with :
 Traceback (most recent call last):
         ...
 TypeError: size must be an integer
+
+Does not work with :
+>>> print_square()
+Traceback (most recent call last):
+        ...
+TypeError: print_square() missing 1 required positional argument: 'size'
