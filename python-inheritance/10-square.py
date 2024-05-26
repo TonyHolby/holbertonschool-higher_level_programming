@@ -15,7 +15,6 @@ class BaseGeometry:
         Args:
             name (str): The name of the parameter.
             value (int): The parameter to validate.
-
         Raises:
             TypeError: If value is not an integer.
             ValueError: If value is less than or equal to 0.
@@ -26,14 +25,11 @@ class BaseGeometry:
             raise ValueError(f"{name} must be greater than 0")
 
 
-""" A class Rectangle that inherits from BaseGeometry.
-    Instantiation with width and height. 
-"""
+""" A class Rectangle that inherits from BaseGeometry. """
 
 
 class Rectangle(BaseGeometry):
     """Defines a class Rectangle that inherits from BaseGeometry."""
-
     def __init__(self, width, height):
         """Initialize a rectangle.
 
