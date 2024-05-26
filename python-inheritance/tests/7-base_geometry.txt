@@ -1,25 +1,33 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-Works with :
 >>> bg = BaseGeometry()
 
 try:
-    bg.integer_validator("name", "John")
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
+        bg.integer_validator("my_int", 12)
+    except Exception as e:
+        print(f"[{e.__class__.__name__}] {e}")
 
-try:
-    bg.integer_validator("age", 0)
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
+    try:
+        bg.integer_validator("width", 89)
+    except Exception as e:
+        print(f"[{e.__class__.__name__}] {e}")
 
-try:
-    bg.integer_validator("distance", -4)
-except Exception as e:
-    print("[{}] {}".format(e.__class__.__name__, e))
+    try:
+        bg.integer_validator("name", "John")
+    except Exception as e:
+        print(f"[{e.__class__.__name__}] {e}")
 
-Does not work with :
->>> bg.integer_validator("my_int", 12)
+    try:
+        bg.integer_validator("age", 0)
+    except Exception as e:
+        print(f"[{e.__class__.__name__}] {e}")
 
+    try:
+        bg.integer_validator("distance", -4)
+    except Exception as e:
+        print(f"[{e.__class__.__name__}] {e}")
 
->>> bg.integer_validator("width", 89)
+    try:
+        bg = BaseGeometry(None)
+    except Exception as e:
+        print(f"[{e.__class__.__name__}] {e}")
