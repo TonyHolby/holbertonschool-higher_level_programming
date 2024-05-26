@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
     Prints a text with 2 new lines after each of these characters: ., ? and :
-    
+
     Parameter:
         text (str): A string.
 
@@ -13,7 +13,7 @@
 def text_indentation(text):
     """ Prints a new text with indentation. """
     if not isinstance(text, str):
-        raise TypeError("text must be a string")   
+        raise TypeError("text must be a string")
     new_text = ""
     character = 0
     while character < len(text):
