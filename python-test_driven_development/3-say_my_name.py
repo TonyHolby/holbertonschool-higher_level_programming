@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
     A function that says my name
-    
+
     Parameters:
         first_name (str): the first name.
         last_name (str): the last name.
