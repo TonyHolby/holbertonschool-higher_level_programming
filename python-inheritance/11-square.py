@@ -4,6 +4,7 @@
     and a public instance method that validates a parameter as an integer.
 """
 
+
 class BaseGeometry:
     """ Defines a class BaseGeometry. """
 
@@ -30,7 +31,6 @@ class BaseGeometry:
 
 """ A class Rectangle that inherits from BaseGeometry.
     Instantiation with width and height.
-    
 """
 
 
@@ -65,10 +65,10 @@ class Rectangle(BaseGeometry):
 
 class Square(Rectangle):
     """Square class inheriting from Rectangle."""
-    
+
     def __init__(self, size):
         """ Initialize Square.
-        
+
         Args:
             size (int): The size of the square.
         """
