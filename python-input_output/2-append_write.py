@@ -1,8 +1,4 @@
 #!/usr/bin/python3
-"""A function that writes a string to a text file."""
-
-
-#!/usr/bin/python3
 """A function that appends a string at the end of a text file."""
 
 
