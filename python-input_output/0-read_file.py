@@ -4,6 +4,6 @@
 
 def read_file(filename=""):
     """Open a file, read a text (UTF8) and print it to stdout."""
-    with open('my_file_0.txt', 'r', encoding="utf-8") as f:
+    with open(filename, 'r', encoding="utf-8") as f:
         read_file = f.read()
-    print(read_file, end='')
+        print(read_file, end='')
