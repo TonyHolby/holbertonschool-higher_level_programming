@@ -14,7 +14,7 @@ class CustomObject:
 
     """ A display method that prints out the object's attributes. """
     def display(self):
-        """ A"""
+        """ Displays the formated output."""
         if self.is_student:
             is_student = "True"
         else:
@@ -23,7 +23,7 @@ class CustomObject:
         print(f"Age: {self.age}")
         print(f"Is Student: {self.is_student}")
 
-    """ A Serialize method that serializes the current instance of the object
+    """ A serialize method that serializes the current instance of the object
         and save it to the provided filename.
     """
     def serialize(self, filename):
@@ -31,9 +31,6 @@ class CustomObject:
         
         Args:
             filename: The name of the file from which it serialized.
-        Returns:
-            An instance of the CustomObject from the provided filename or
-            otherwise None.
         """
         try:
             with open(filename, 'wb') as file:
@@ -41,15 +38,16 @@ class CustomObject:
         except Exception as e:
             print(f"Serialization error: {e}")
 
-    """ A deserialize class method that loads and returns an instance of the
-        CustomObject from the provided filename.
+    """ A class method named deserialize that loads and returns an instance of
+        the CustomObject from the provided filename.
     """
     @classmethod
     def deserialize(cls, filename):
         """ Deserialize custom Python objects using the pickle module.
         
         Args:
-            filename: The name of the file from which it serialized.
+            cls: The custom class CustomObject.
+            filename: The name of the file from which it deserialized.
         Returns:
             An instance of the CustomObject from the provided filename or
             otherwise None.
@@ -60,7 +58,7 @@ class CustomObject:
                 if isinstance(obj, cls):
                     return obj
                 else:
-                    print("File does not contain instance of CustomObject.")
+                    print("File does not contain the CustomObject instance.")
                     return None
         except Exception as e:
             print(f"Deserialization error: {e}")
