@@ -1,0 +1,165 @@
+#1. What is HTTP?
+
+HTTP is a protocol for fetching resources such as HTML documents. It is the
+foundation of any data exchange on the Web and it is a client-server protocol,
+which means requests are initiated by the recipient, usually the Web browser.
+A complete document is reconstructed from the different sub-documents fetched,
+for instance, text, layout description, images, videos, scripts, and more.
+
+Clients and servers communicate by exchanging individual messages (as opposed
+to a stream of data). The messages sent by the client, usually a Web browser,
+are called requests and the messages sent by the server as an answer are
+called responses.
+
+# HTTP communication diagram:
++-------+           +-------+
+|       |  Request  |       |
+|       |   ----->  |       |
+|       |           |       |
+|       | <-----    |       |
+|       |  Response |       |
++-------+           +-------+
+  Client            Web Server
+
+
+#2. An outline of the structure of an HTTP request and response.
+
+# HTTP request:
+Requests consist of the following elements:
+    - An HTTP method, usually a verb like GET, POST, or a noun like OPTIONS or
+    HEAD that defines the operation the client wants to perform. Typically, a
+    client wants to fetch a resource (using GET) or post the value of an HTML
+    form (using POST), though more operations may be needed in other cases.
+    - The path of the resource to fetch; the URL of the resource stripped from
+    elements that are obvious from the context, for example without the
+    protocol (http://), the domain (here, developer.mozilla.org), or the TCP
+    port (here, 80).
+    - The version of the HTTP protocol.
+    Optional headers that convey additional information for the servers.
+    - A body, for some methods like POST, similar to those in responses, which
+    contain the resource sent.
+
+# An example HTTP request:
+```
+
+GET / HTTP/1.1
+Host: developer.mozilla.org
+Accept-Language: fr
+
+```
+
+# Responses:
+Responses consist of the following elements:
+    - The version of the HTTP protocol they follow.
+    - A status code, indicating if the request was successful or not, and why.
+    - A status message, a non-authoritative short description of the status
+    code.
+    - HTTP headers, like those for requests.
+    - Optionally, a body containing the fetched resource.
+
+# An example response:
+```
+
+HTTP/1.1 200 OK
+Date: Sat, 09 Oct 2010 14:28:02 GMT
+Server: Apache
+Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
+ETag: "51142bc1-7449-479b075b2891b"
+Accept-Ranges: bytes
+Content-Length: 29769
+Content-Type: text/html
+
+```
+
+# Differences between HTTP and HTTPS.
+
+What is HTTPS?
+The S in HTTPS stands for "secure." HTTPS uses TLS (or SSL) to encrypt HTTP
+requests and responses, so in the example above, instead of the text, an
+attacker would see a bunch of seemingly random characters.
+
+Instead of:
+```
+
+GET /hello.txt HTTP/1.1
+User-Agent: curl/7.63.0 libcurl/7.63.0 OpenSSL/1.1.l zlib/1.2.11
+Host: www.example.com
+Accept-Language: en
+
+```
+The attacker sees something like:
+
+```
+
+t8Fw6T8UV81pQfyhDkhebbz7+oiwldr1j2gHBB3L3RFTRsQCpaSnSBZ78Vme+DpDVJPvZdZUZHpzbb
+cqmSW1+3xXGsERHg9YDmpYk0VVDiRvw1H5miNieJeJ/FNUjgH0BmVRWII6+T4MnDwmCMZUI/orxP3H
+GwYCSIvyzS3MpmmSe4iaWKCOHQ==
+
+```
+
+
+#3. Lists of common HTTP methods and status codes.
+
+# HTTP methods.
+
+HTTP defines a set of request methods to indicate the desired action to be
+performed for a given resource. Although they can also be nouns, these request
+methods are sometimes referred to as HTTP verbs.
+
+# Some examples of HTTP methods:
+
+- GET
+Description: Retrieves data.
+Use case: Fetching a web page or data from an API.
+
+- PUT
+Description: Creates a new resource or replaces a representation of the target
+resource with the request payload.
+Use case: Submiting forms, uploading files, creating new resources.
+
+- POST
+Description: Sends data to the server.
+Use case: The type of the body of the request is indicated by the Content-Type
+header.
+
+- HEAD
+Description: Requests the headers that would be returned if the HEAD request's
+URL was instead requested with the HTTP GET method.
+Use case: If a URL might produce a large download, a HEAD request could read
+its Content-Length header to check the filesize without actually downloading
+the file.
+
+# HTTP status.
+
+HTTP response status codes indicate whether a specific HTTP request has been
+successfully completed.
+They are grouped by their first digit: 1xx (informational), 2xx (successful),
+3xx (redirection), 4xx (client errors), and 5xx (server errors).
+
+# Some examples of status codes:
+
+Status Code: 404
+Description: Not Found
+Scenario: When a requested page or resource isn’t available on the server.
+
+Status Code: 200
+Description: Ok
+Scenario: Standard response for successful HTTP requests.
+
+Status Code: 101
+Description: Switching Protocols
+Scenario: The requester has asked the server to switch protocols and the
+server has agreed to do so.
+
+Status Code: 302
+Description: Found
+Scenario: Tells the client to look at (browse to) another URL. The HTTP/1.0
+specification required the client to perform a temporary redirect with the
+same method (the original describing phrase was "Moved Temporarily"), but
+popular browsers implemented 302 redirects by changing the method to GET.
+Therefore, HTTP/1.1 added status codes 303 and 307 to distinguish between
+the two behaviours
+
+Status Code: 505
+Description: HTTP version Not Supported
+Scenario: The server does not support the HTTP version used in the request.
