@@ -8,7 +8,7 @@ import csv
 
 def fetch_and_print_posts():
     """ Displays a list of dictionary if status code is equal to 200. """
-    response = requests.get("https://jsonplaceholder.typicode.com/todos")
+    response = requests.get("https://jsonplaceholder.typicode.com/posts")
     print("Status Code:", response.status_code)
     if response.status_code == 200:
         fetched_data = response.json()
