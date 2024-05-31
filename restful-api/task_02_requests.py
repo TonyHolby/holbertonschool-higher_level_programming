@@ -14,8 +14,6 @@ def fetch_and_print_posts():
         fetched_data = response.json()
         for data in fetched_data:
             print(data["title"])
-    else:
-        print("Status code is not equal to 200")
 
 
 """ Defines a method named fetch_and_save_posts that converts structured data
@@ -26,15 +24,12 @@ def fetch_and_print_posts():
 def fetch_and_save_posts():
     """ Saves data in a CSV file if status code is equal to 200. """
     response = requests.get("https://jsonplaceholder.typicode.com/todos")
-    print(f"Status code received : {response.status_code}")
     if response.status_code == 200:
         fetched_data = response.json()
+        posts = []
         for d in fetched_data:
-            posts = [{"id": d["id"], "title": d["title"], "body": d["body"]}]
-        csv_file = "posts.csv"
-        with open(csv_file, 'w', encoding="utf-8") as file:
-            writer = csv.DictWriter(file, field_names=["id", "title", "body"])
+            posts.append({"id": d.get("id"), "title": d.get("title"), "body": d.get("body")})
+        with open("posts.csv", 'w', encoding="utf-8") as file:
+            writer = csv.DictWriter(file, fieldnames=["id", "title", "body"])
             writer.writeheader()
             writer.writerows(posts)
-    else:
-        print("Status code is not equal to 200")
