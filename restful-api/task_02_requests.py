@@ -13,7 +13,7 @@ def fetch_and_print_posts():
     if response.status_code == 200:
         fetched_data = response.json()
         for data in fetched_data:
-            print(data.get("title")
+            print(data.get("title"))
 
 
 """ Defines a method named fetch_and_save_posts that converts structured data
