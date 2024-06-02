@@ -41,7 +41,7 @@ def status():
 
 
 @app.route("/users/<username>")
-def get_user(username):
+def user(username):
     """ Gets a user.
 
     Args:
