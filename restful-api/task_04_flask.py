@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 users = {}
 
+
 """ Defines a route for the root URL. """
 
 
@@ -11,7 +12,8 @@ users = {}
 def home():
     """ Handles the route.
 
-    Returns: The string: "Welcome to the Flask API!".
+    Returns:
+        The string: "Welcome to the Flask API!".
     """
     return "Welcome to the Flask API!"
 
@@ -23,7 +25,8 @@ def home():
 def data():
     """ Stores the users in memory using a dictionary.
 
-    Returns: A list of all the usernames stored in the API.
+    Returns:
+        A list of all the usernames stored in the API.
     """
     return jsonify(list(users.keys()))
 
@@ -35,7 +38,8 @@ def data():
 def status():
     """ Returns the status of the request.
 
-    Returns: OK.
+    Returns:
+        "OK".
     """
     return "OK"
 
@@ -47,7 +51,8 @@ def user(username):
     Args:
         username: the name of the user.
 
-    Returns: The full object corresponding to the provided username.
+    Returns:
+        The full object corresponding to the provided username.
     """
     user = users.get(username)
     if user:
@@ -63,7 +68,8 @@ def user(username):
 def add_user():
     """ Adds the new user to the users dictionary.
 
-    Returns: A confirmation message with the added user's data.
+    Returns:
+        A confirmation message with the added user's data.
     """
     new_user = request.get_json()
     username = data.get("username")
