@@ -46,12 +46,11 @@ def status():
 
 
 @app.route("/users/<username>")
-def user(username):
+def get_user(username):
     """ Gets a user.
 
     Args:
         username: the name of the user.
-
     Returns:
         The full object corresponding to the provided username.
     """
@@ -70,16 +69,13 @@ def add_user():
     """ Adds the new user to the users dictionary.
 
     Returns:
-        A confirmation message with the added user's data.
+        A confirmation message with the added user's data or an error message.
     """
     new_user = request.get_json()
     username = data.get("username")
 
     if not username:
         return jsonify({"error": "username is required"}), 400
-
-    if username in users:
-        return jsonify({"error": "username already exists"}), 409
 
     users[username] = new_user
     return jsonify({"message": "User added", "user": users[username]}), 201
