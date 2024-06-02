@@ -47,7 +47,7 @@ def user(username):
     Args:
         username (str): the name of the user.
     Returns:
-        The full object corresponding to the provided username or an 
+        The full object corresponding to the provided username or an
         error message.
     """
     user = users.get(username)
@@ -60,10 +60,16 @@ def user(username):
 @app.route("/add_user", methods=["POST"])
 def add_user():
     """
-    Adds the new user to the users dictionary.
+    Add a new user to the users dictionary.
 
     Returns:
-        A confirmation message with the added user's data or an error message.
+            A JSON response with the following structure:
+            - If the JSON data is invalid: {"error": "Invalid JSON data"}
+            - If the username already exists:
+            {"error": "Username already exists"}
+            - If the user is successfully added:
+            {"message": "User added", "user": <user_data>}
+            - If an exception occurs: {"error": <exception_message>}
     """
     new_user = request.get_json()
     username = new_user.get("username")
