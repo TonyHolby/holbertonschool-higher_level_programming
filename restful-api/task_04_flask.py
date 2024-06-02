@@ -1,7 +1,5 @@
 from flask import Flask, jsonify, request
 
-
-
 app = Flask(__name__)
 
 users = {}
@@ -78,6 +76,8 @@ def add_user():
     """
     new_user = request.get_json()
     username = new_user.get("username")
+    if not new_user:
+        return jsonify({"error": "Invalid JSON data"}), 400
     if not username:
         return jsonify({"error": "username is required"}), 400
     if username in users:
