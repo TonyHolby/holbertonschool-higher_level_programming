@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 from flask import Flask, jsonify, request
 
 
@@ -8,24 +7,25 @@ app = Flask(__name__)
 users = {}
 
 
-@app.route('/')
+@app.route("/")
 def home():
     """
-    Handles the route.
+    This function handles the root route of the Flask API.
 
     Returns:
-        The string: "Welcome to the Flask API!".
+            str: A welcome message for the Flask API.
     """
     return "Welcome to the Flask API!"
 
 
 @app.route("/data")
-def get_data():
+def data():
     """
-    Stores the users in memory using a dictionary.
+    Retrieve a list of usernames from the 'users'
+    dictionary and return it as a JSON response.
 
     Returns:
-        A list of all the usernames stored in the API.
+            A JSON response containing a list of usernames.
     """
     return jsonify(list(users.keys()))
 
@@ -33,21 +33,21 @@ def get_data():
 @app.route("/status")
 def status():
     """
-    Returns the status of the request.
+    Returns the status of the API.
 
     Returns:
-        The status message: OK.
+            str: The status message "OK".
     """
     return "OK"
 
 
 @app.route("/users/<username>")
-def get_user(username):
+def user(username):
     """
-    Gets user information.
+    Retrieve user information based on the provided username.
 
     Args:
-            username (str): The username of the user.
+            username: The username of the user to retrieve information for.
 
     Returns:
             If the user is found, the user information
@@ -65,7 +65,7 @@ def get_user(username):
 @app.route("/add_user", methods=["POST"])
 def add_user():
     """
-    Adds a new user to the users dictionary.
+    Add a new user to the system.
 
     Returns:
             A JSON response with the following structure:
@@ -83,7 +83,7 @@ def add_user():
     if username in users:
         return jsonify({"error": "Username already exists"}), 409
     users[username] = new_user
-    return jsonify({"message": "User added", "user": new_user}), 201
+    return jsonify({"message": "User added", "user": users[username]}), 201
 
 
 if __name__ == "__main__":
