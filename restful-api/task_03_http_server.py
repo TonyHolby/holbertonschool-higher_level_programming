@@ -32,7 +32,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             info_version = {"version": "1.0", "description": "A simple API built with http.server"}
             self.wfile.write(json.dumps(info_version).encode("utf-8"))
         else:
-            self.send_error(404, "404 Not Found")
+            self.send_error(404, "Endpoint not found")
 
 PORT = 8000
 with socketserver.TCPServer(("", PORT), SimpleHTTPRequestHandler) as httpd:
