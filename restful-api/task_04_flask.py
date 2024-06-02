@@ -6,7 +6,7 @@ app = Flask(__name__)
 users = {}
 
 
-@app.route("/")
+@app.route('/')
 def home():
     """
     Handles the route.
@@ -18,7 +18,7 @@ def home():
 
 
 @app.route("/data")
-def data():
+def get_data():
     """
     Stores the users in memory using a dictionary.
 
@@ -34,13 +34,13 @@ def status():
     Returns the status of the request.
 
     Returns:
-        The string: OK.
+        The status message: OK.
     """
     return "OK"
 
 
 @app.route("/users/<username>")
-def user(username):
+def get_user(username):
     """
     Gets user information.
 
@@ -63,7 +63,7 @@ def user(username):
 @app.route("/add_user", methods=["POST"])
 def add_user():
     """
-    Add a new user to the users dictionary.
+    Adds a new user to the users dictionary.
 
     Returns:
             A JSON response with the following structure:
@@ -81,7 +81,7 @@ def add_user():
     if username in users:
         return jsonify({"error": "Username already exists"}), 409
     users[username] = new_user
-    return jsonify({"message": "User added", "user": users[username]}), 201
+    return jsonify({"message": "User added", "user": new_user}), 201
 
 
 if __name__ == "__main__":
