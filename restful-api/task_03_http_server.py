@@ -6,9 +6,14 @@ import json
 
 
 class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
-    """ Defines a do_GET method that handles GET requests. """
+    """ Defines a do_GET method that handles GET requests.
+
+        Args:
+            http.server.BaseHTTPRequestHandler : A class from the http.server
+            module that handles HTTP requests.
+    """
     def do_GET(self):
-        """ Sends a simple text response back to the client. """
+        """ Sends a simple text or a JSON response back to the client. """
         if self.path == "/":
             self.send_response(200)
             self.send_header("Content-type", "text/plain")
@@ -29,10 +34,12 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-type", "application/json")
             self.end_headers()
-            info_version = {"version": "1.0", "description": "A simple API built with http.server"}
+            info_version = {"version": "1.0", "description": """A \
+                            simple API built with http.server"""}
             self.wfile.write(json.dumps(info_version).encode("utf-8"))
         else:
             self.send_error(404, "Endpoint not found")
+
 
 PORT = 8000
 with socketserver.TCPServer(("", PORT), SimpleHTTPRequestHandler) as httpd:
