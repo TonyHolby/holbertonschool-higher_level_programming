@@ -6,10 +6,7 @@ app = Flask(__name__)
 users = {}
 
 
-""" Defines a route for the root URL. """
-
-
-@app.route('/')
+@app.route("/")
 def home():
     """
     Handles the route.
@@ -18,9 +15,6 @@ def home():
         The string: "Welcome to the Flask API!".
     """
     return "Welcome to the Flask API!"
-
-
-""" Defines a new route and return a JSON response using jsonify(). """
 
 
 @app.route("/data")
@@ -34,13 +28,10 @@ def data():
     return jsonify(list(users.keys()))
 
 
-""" Defines endpoints to simulate different functionalities. """
-
-
 @app.route("/status")
 def status():
     """
-    Gives the status of the request.
+    Returns the status of the request.
 
     Returns:
         The string: OK.
@@ -49,7 +40,7 @@ def status():
 
 
 @app.route("/users/<username>")
-def get_user(username):
+def user(username):
     """
     Gets a user.
 
@@ -66,9 +57,6 @@ def get_user(username):
         return jsonify({"error": "User not found"}), 404
 
 
-""" Defines a new route that accepts POST requests. """
-
-
 @app.route("/add_user", methods=["POST"])
 def add_user():
     """
@@ -78,9 +66,11 @@ def add_user():
         A confirmation message with the added user's data or an error message.
     """
     new_user = request.get_json()
-    username = data.get("username")
+    username = new_user.get("username")
     if not username:
         return jsonify({"error": "username is required"}), 400
+    if username in users:
+        return jsonify({"error": "Username already exists"}), 409
     users[username] = new_user
     return jsonify({"message": "User added", "user": users[username]}), 201
 
