@@ -20,7 +20,7 @@ def home():
 
 
 @app.route("/data")
-def get_users():
+def data():
     """ Stores the users in memory using a dictionary.
 
     Returns: A list of all the usernames stored in the API.
