@@ -11,7 +11,8 @@ users = {}
 
 @app.route('/')
 def home():
-    """ Handles the route.
+    """
+    Handles the route.
 
     Returns:
         The string: "Welcome to the Flask API!".
@@ -24,7 +25,8 @@ def home():
 
 @app.route("/data")
 def data():
-    """ Stores the users in memory using a dictionary.
+    """
+    Stores the users in memory using a dictionary.
 
     Returns:
         A list of all the usernames stored in the API.
@@ -37,7 +39,8 @@ def data():
 
 @app.route("/status")
 def status():
-    """ Returns the status of the request.
+    """
+    Gives the status of the request.
 
     Returns:
         The string: OK.
@@ -47,12 +50,14 @@ def status():
 
 @app.route("/users/<username>")
 def get_user(username):
-    """ Gets a user.
+    """
+    Gets a user.
 
     Args:
         username (str): the name of the user.
     Returns:
-        The full object corresponding to the provided username.
+        The full object corresponding to the provided username or an 
+        error message.
     """
     user = users.get(username)
     if user:
@@ -66,17 +71,16 @@ def get_user(username):
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    """ Adds the new user to the users dictionary.
+    """
+    Adds the new user to the users dictionary.
 
     Returns:
         A confirmation message with the added user's data or an error message.
     """
     new_user = request.get_json()
     username = data.get("username")
-
     if not username:
         return jsonify({"error": "username is required"}), 400
-
     users[username] = new_user
     return jsonify({"message": "User added", "user": users[username]}), 201
 
