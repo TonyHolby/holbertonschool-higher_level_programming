@@ -65,7 +65,7 @@ def add_user():
 
     Returns: A confirmation message with the added user's data.
     """
-    data = request.get_json()
+    new_user = request.get_json()
     username = data.get("username")
 
     if not username:
@@ -74,7 +74,7 @@ def add_user():
     if username in users:
         return jsonify({"error": "username already exists"}), 409
 
-    users[username] = data
+    users[username] = new_user
     return jsonify({"message": "User added", "user": users[username]}), 201
 
 
