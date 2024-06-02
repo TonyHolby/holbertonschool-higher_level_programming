@@ -42,13 +42,16 @@ def status():
 @app.route("/users/<username>")
 def user(username):
     """
-    Gets a user.
+    Gets user information.
 
     Args:
-        username (str): the name of the user.
+            username (str): The username of the user.
+
     Returns:
-        The full object corresponding to the provided username or an
-        error message.
+            If the user is found, the user information
+            is returned as a JSON response.
+            If the user is not found, a JSON response with an
+            error message and a 404 status code is returned.
     """
     user = users.get(username)
     if user:
