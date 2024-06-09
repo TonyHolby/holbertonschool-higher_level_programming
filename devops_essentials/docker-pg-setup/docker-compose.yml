@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: postgresdatabase
+      POSTGRES_USER: tony
+      POSTGRES_PASSWORD: Securepassword123.
+    networks:
+      - my_custom_private_network
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  admin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: example@example.com
+      PGADMIN_DEFAULT_PASSWORD: Mysecureadminpassword456.
+      PGADMIN_DEFAULT_SERVER: db
+    depends_on:
+      - db
+    networks:
+      - my_custom_private_network
+    ports:
+      - "8080:80"
+
+networks:
+  my_custom_private_network:
+    driver: bridge
+
+volumes:
+  db-data:
