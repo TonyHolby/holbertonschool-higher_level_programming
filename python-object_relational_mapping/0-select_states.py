@@ -10,7 +10,7 @@ def list_states(mysql_username, mysql_password, database_name):
     cur.execute("SELECT * FROM states ORDER BY id ASC")
     query_rows = cur.fetchall()
     for row in query_rows:
-        print(row)
+        print("({}, '{}')".format(row[0], row[1]))
     cur.close()
     conn.close()
 
