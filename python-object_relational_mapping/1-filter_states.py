@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """ A method that lists all states with a name starting with N (upper N)
-    from the database hbtn_0e_0_usa. 
+    from the database hbtn_0e_0_usa.
 """
 import sys
 import MySQLdb
@@ -18,7 +18,8 @@ if __name__ == "__main__":
                            db=database_name,
                            charset="utf8")
     cur = conn.cursor()
-    cur.execute("SELECT * FROM states WHERE states.name LIKE 'N%' ORDER BY states.id ASC")
+    cur.execute("SELECT * FROM states WHERE states.name LIKE 'N%'\
+                ORDER BY states.id ASC")
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
