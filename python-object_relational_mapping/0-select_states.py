@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 import MySQLdb
-""" A method"""
+""" A method that lists all states from the database hbtn_0e_0_usa. """
 
 
 def list_states(mysql_username, mysql_password, database_name):
@@ -14,13 +14,13 @@ def list_states(mysql_username, mysql_password, database_name):
     cur.close()
     conn.close()
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 4:
         print("Usage: {} <mysql_username> <mysql_password> <database_name>".format(sys.argv[0]))
         sys.exit(1)
-
-mysql_username = sys.argv[1]
-mysql_password = sys.argv[2]
-database_name = sys.argv[3]
-
-list_states(mysql_username, mysql_password, database_name)
+    else:
+        mysql_username = sys.argv[1]
+        mysql_password = sys.argv[2]
+        database_name = sys.argv[3]
+        list_states(mysql_username, mysql_password, database_name)
