@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 
-""" A method that takes in arguments and displays all values in the
-    states table of hbtn_0e_0_usa where name matches the argument
-    and that is safe from MySQL injections.
-"""
+""" A method that lists all cities from the database hbtn_0e_4_usa. """
 import sys
 import MySQLdb
 
