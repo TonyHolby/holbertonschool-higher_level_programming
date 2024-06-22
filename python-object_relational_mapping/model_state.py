@@ -15,10 +15,21 @@ Base = declarative_base()
 
 
 class State(Base):
+    """
+     Defines a state in the database.
+
+    Attributes:
+        id (int): The id of the state.
+        name (str): The name of the state.
+        charset (str): The encodage of the table.
+    """
     __tablename__ = 'states'
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String(128), nullable=False)
 
+    __table_args__ = {'mysql_charset': 'latin1'}
 
+
+Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
