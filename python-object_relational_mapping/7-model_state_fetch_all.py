@@ -12,9 +12,9 @@ if __name__ == "__main__":
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
-    engine = create_engine(f"""mysql+mysqldb://
-                           {mysql_username}:{mysql_password}
-                           @localhost:3306/{database_name}""")
+    engine = create_engine(f"""mysql+mysqldb://{mysql_username}:
+                           {mysql_password}@localhost:3306/{database_name}""")
+    Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
     states = session.query(State).order_by(State.id).all()
