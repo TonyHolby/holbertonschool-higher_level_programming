@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" A method that takes in an argument and displays all values in the
+""" A script that takes in an argument and displays all values in the
     states table of hbtn_0e_0_usa where name matches the argument.
 """
 import sys
@@ -18,14 +18,14 @@ if __name__ == "__main__":
                            passwd=mysql_password,
                            db=database_name,
                            charset="utf8")
-    cur = conn.cursor()
-    cur.execute(
-        "SELECT * FROM states \
-            WHERE states.name = '{}' \
-                ORDER BY states.id ASC".format(state_name_searched)
-                )
-    query_rows = cur.fetchall()
+    
+    cursor = conn.cursor()
+    cursor.execute(
+        "SELECT * FROM states"
+        "WHERE states.name = '{}'"
+        "ORDER BY states.id ASC".format(state_name_searched))
+    query_rows = cursor.fetchall()
     for row in query_rows:
         print(row)
-    cur.close()
+    cursor.close()
     conn.close()
