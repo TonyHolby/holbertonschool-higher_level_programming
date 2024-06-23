@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" A class that prints the State object with the name passed as argument
+""" A script that prints the State object with the name passed as argument
     from the database hbtn_0e_6_usa.
 """
 import sys
