@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-""" A class that adds the State object "Louisiana"
+""" A script that adds the State object "Louisiana"
     to the database hbtn_0e_6_usa.
 """
 import sys
