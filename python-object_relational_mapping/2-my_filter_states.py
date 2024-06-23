@@ -18,14 +18,16 @@ if __name__ == "__main__":
                            passwd=mysql_password,
                            db=database_name,
                            charset="utf8")
-    
+
     cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM states"
-        "WHERE states.name = '{}'"
-        "ORDER BY states.id ASC".format(state_name_searched))
+    query = ("SELECT * FROM states WHERE states.name = '{}' "
+             "ORDER BY states.id ASC".format(state_name_searched))
+    cursor.execute(query)
+
     query_rows = cursor.fetchall()
+
     for row in query_rows:
         print(row)
+
     cursor.close()
     conn.close()
