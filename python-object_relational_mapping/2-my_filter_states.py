@@ -20,9 +20,8 @@ if __name__ == "__main__":
                            charset="utf8")
 
     cursor = conn.cursor()
-    query = ("SELECT * FROM states WHERE states.name = '{}' "
-             "ORDER BY states.id ASC".format(state_name_searched))
-    cursor.execute(query)
+    query = "SELECT * FROM states WHERE BINARY name = %s ORDER BY id ASC"
+    cursor.execute(query, (state_name_searched,))
 
     query_rows = cursor.fetchall()
 
