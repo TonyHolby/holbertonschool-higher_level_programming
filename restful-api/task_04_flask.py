@@ -74,7 +74,7 @@ def add_user():
     if not username:
         return jsonify({"error": "Username is required"}), 400
 
-    if new_user in users:
+    if username in users:
         return jsonify({"error": "username already exists"}), 400
 
     users[username] = new_user
