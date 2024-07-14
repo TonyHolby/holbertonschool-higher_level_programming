@@ -79,9 +79,8 @@ def add_user():
 
     for element in users:
         if element == username:
-            return jsonify({"error": "Username already exists"}), 400
+            return jsonify({"error": "Username already exists"}), 409
 
-    users[username] = new_user
     return jsonify({"message": "User added", "user": users[username]}), 201
 
 
