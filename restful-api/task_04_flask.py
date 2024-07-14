@@ -73,8 +73,8 @@ def add_user():
             {"message": "User added", "user": <user_data>}
             - If an exception occurs: {"error": <exception_message>}
     """
-    user_data = request.get_json()
-    username = user_data.get("username")
+    new_user = request.get_json()
+    username = new_user.get("username")
 
     if not username:
         return jsonify({"error": "username is required"}), 400
@@ -83,11 +83,11 @@ def add_user():
         return jsonify({"error": "Username already exists"}), 400
 
     users[username] = {
-        "name": user_data.get("name"),
-        "age": user_data.get("age"),
-        "city": user_data.get("city")
+        "name": username.get("name"),
+        "age": username.get("age"),
+        "city": username.get("city")
     }
-    return jsonify({"message": "User added", "user": users[username]})
+    return jsonify({"message": "User added", "user": users[username]}), 201
 
 
 if __name__ == "__main__":
