@@ -38,10 +38,9 @@ class Circle(Shape):
     """ A method to calculate the perimeter of the circle. """
     def perimeter(self):
         """ Returns the perimeter of the circle. """
-        if self.radius < 0:
-            return "radius can not be negative."
-        circle_perimeter = 2 * math.pi * self.radius
-        return circle_perimeter
+        if self.radius >= 0:
+            circle_perimeter = 2 * math.pi * self.radius
+            return circle_perimeter
 
 
 """ A subclass representing a rectangle, inheriting from Shape. """
