@@ -62,11 +62,12 @@ def add_user():
     Add a new user to the system.
     Returns:
             A JSON response with the following structure:
-            - If the username is missing: {"error": "Username is required"}
-            - If the username already exists:
+            - If the user is added without username:
+            {"error": "Username is required"}
+            - If the user is added with a duplicate username:
             {"error": "Username already exists"}
             - If the user is successfully added:
-            {"message": "User added", "user": <new_user>}
+            {"message": "User added", "user": <users[username]>}
     """
     new_user = request.get_json()
 
@@ -74,11 +75,11 @@ def add_user():
     if not username:
         return jsonify({"error": "Username is required"}), 400
 
-    if username in users:
-        return jsonify({"error": "username already exists"}), 400
-
-    users[username] = new_user
-    return jsonify({"message": "User added", "user": users[username]}), 201
+    if username and username not in users:
+        users[username] = new_user
+        return jsonify({"message": "User added", "user": users[username]}), 201
+    else:
+        return jsonify({"error": "Username already exists"}), 400
 
 
 if __name__ == "__main__":
