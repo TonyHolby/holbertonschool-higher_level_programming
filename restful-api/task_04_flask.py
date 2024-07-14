@@ -2,7 +2,7 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-users = {}
+users = {"jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"}, "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}}
 
 
 @app.route("/")
@@ -70,23 +70,19 @@ def add_user():
             {"message": "User added", "user": <user_data>}
             - If an exception occurs: {"error": <exception_message>}
     """
-    try:
-        new_user = request.get_json()
-        if not new_user:
-            return jsonify({"error": "Invalid JSON data"}), 400
+    new_user = request.get_json()
+    if not new_user:
+        return jsonify({"error": "Invalid JSON data"}), 400
 
-        username = new_user.get("username")
-        if not username:
-            return jsonify({"error": "username is required"}), 400
+    username = new_user.get("username")
+    if not username:
+        return jsonify({"error": "Username is required"}), 400
 
-        if username in users:
-            return jsonify({"error": "username already exists"}), 400
+    if username in users:
+        return jsonify({"error": "Username already exists"}), 400
 
-        users[username] = new_user
-        return jsonify({"message": "User added", "user": users[username]}), 201
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    users[username] = new_user
+    return jsonify({"message": "User added", "user": users[username]}), 201
 
 
 if __name__ == "__main__":
