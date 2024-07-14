@@ -62,7 +62,6 @@ def add_user():
     Add a new user to the system.
     Returns:
             A JSON response with the following structure:
-            - If the JSON data is invalid: {"error": "Invalid JSON data"}
             - If the username is missing: {"error": "Username is required"}
             - If the username already exists:
             {"error": "Username already exists"}
@@ -75,7 +74,7 @@ def add_user():
     if not username:
         return jsonify({"error": "Username is required"}), 400
 
-    if username in users:
+    if new_user in users:
         return jsonify({"error": "username already exists"}), 400
 
     users[username] = new_user
