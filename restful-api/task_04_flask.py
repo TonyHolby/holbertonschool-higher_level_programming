@@ -70,16 +70,13 @@ def add_user():
             {"message": "User added", "user": <new_user>}
     """
     new_user = request.get_json()
-    if not new_user:
-        return jsonify({"error": "Invalid JSON data"}), 400
 
     username = new_user.get("username")
     if not username:
         return jsonify({"error": "Username is required"}), 400
 
-    for element in users:
-        if element == username:
-            return jsonify({"error": "Username already exists"}), 409
+    if username in users:
+        return jsonify({"error": "Username already exists"}), 400
 
     users[username] = new_user
     return jsonify({"message": "User added", "user": users[username]}), 201
