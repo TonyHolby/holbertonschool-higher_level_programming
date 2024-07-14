@@ -9,7 +9,6 @@ users = {}
 def home():
     """
     This function handles the root route of the Flask API.
-
     Returns:
             str: A welcome message for the Flask API.
     """
@@ -19,8 +18,8 @@ def home():
 @app.route("/data")
 def data():
     """
-    This function retrieves a list of usernames from the 'users' dictionary
-    and return it as a JSON response.
+    Retrieve a list of usernames from the 'users' dictionary and return it as
+    a JSON response.
 
     Returns:
             A JSON response containing a list of usernames.
@@ -31,8 +30,7 @@ def data():
 @app.route("/status")
 def status():
     """
-    This function returns the status endpoint of the API.
-
+    Returns the status of the API.
     Returns:
             str: The status message "OK".
     """
@@ -42,8 +40,7 @@ def status():
 @app.route("/users/<username>")
 def user(username):
     """
-    This function retrieves user information based on the provided username.
-
+    Retrieve user information based on the provided username.
     Args:
             username: The username of the user to retrieve information for.
     Returns:
