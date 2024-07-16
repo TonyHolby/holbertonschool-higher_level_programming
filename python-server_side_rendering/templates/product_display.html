@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Product List</title>
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Products List</h1>
+    {% if products_to_display %}
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+            {% for element in products_to_display %}
+            <tr>
+                <td>{{ element.id }}</td>
+                <td>{{ element.name }}</td>
+                <td>{{ element.category }}</td>
+                <td>{{ element.price }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No product found</p>
+    {% endif %}
+    {% include 'footer.html' %}
+</body>
+</html>
