@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Product List</title>
+    <title>Products List</title>
 </head>
 <body>
     {% include 'header.html' %}
@@ -16,7 +16,6 @@
             </tr>
             {% for element in products_to_display %}
             <tr>
-                <td>{{ element.id }}</td>
                 <td>{{ element.name }}</td>
                 <td>{{ element.category }}</td>
                 <td>{{ element.price }}</td>
