@@ -6,23 +6,25 @@
 <body>
     {% include 'header.html' %}
     <h1>Products List</h1>
-    {% if products_to_display %}
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Price</th>
-            </tr>
-            {% for element in products_to_display %}
-            <tr>
-                <td>{{ element.name }}</td>
-                <td>{{ element.category }}</td>
-                <td>{{ element.price }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
     {% else %}
-        <p>No product found</p>
+        {% if products_to_display %}
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                </tr>
+                {% for element in products_to_display %}
+                <tr>
+                    <td>{{ element.name }}</td>
+                    <td>{{ element.category }}</td>
+                    <td>{{ element.price }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
     {% endif %}
     {% include 'footer.html' %}
 </body>
